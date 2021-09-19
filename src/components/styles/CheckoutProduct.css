@@ -1,6 +1,9 @@
 
 .checkoutProduct{
     display: flex;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
 
 }
 
@@ -41,9 +44,5 @@
 .checkoutProduct__rating{
     display: flex;
 
-
-}
-
-.checkoutProduct__button{
 
 }
