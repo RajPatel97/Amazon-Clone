@@ -1,6 +1,23 @@
+import { useStateValue } from '../StateProvider';
 import './styles/Product.css'
 
 const Product = ({id, title, image,price, rating}) => {
+
+    const [{}, dispatch] = useStateValue();
+
+    const addToBasket =()=>{
+        //add item to backet
+        dispatch({
+            type:'ADD_TO_BASKET',
+            item:{
+                id:id,
+                title: title, 
+                image: image,
+                price: price,
+                rating: rating
+            }
+        })
+    }
 
     return ( 
         <div className="product">
@@ -19,9 +36,9 @@ const Product = ({id, title, image,price, rating}) => {
         </dic>
         
         </div>
-        
+
         <img src={image} alt="" />
-        <button>Add to Cart</button>
+        <button onClick = {addToBasket}>Add to Cart</button>
         </div>
      );
 }

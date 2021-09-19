@@ -4,7 +4,9 @@ import './styles/Header.css'
 
 
 const Header = () => {
+    
     const [{cart}] = useStateValue();
+    console.log(cart)
     return ( 
         <nav className = "header">
         <Link to = "/">
@@ -40,7 +42,7 @@ const Header = () => {
         <Link to = "/checkout" className = 'header__link'>
         <div className="header__optionBasket">
         <img className = "header__searchIcon baskeyCount" src="https://cdn-icons-png.flaticon.com/512/34/34568.png" alt="" />
-            <span className = 'header__optionLineTwo baskeyCount'>{cart.length}</span>
+            <span className = 'header__optionLineTwo baskeyCount'>{cart?.length}</span>
         </div>
         </Link>
 

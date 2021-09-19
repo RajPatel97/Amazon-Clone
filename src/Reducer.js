@@ -4,13 +4,17 @@ export const initialState = {
 };
 
 const reducer = (state, action)=>{
+    console.log(action);
     switch(action.type){
         case 'ADD_TO_BASKET':
             //logic to add
-            break;
+            return {
+                ...state,
+                cart:[...state.cart,action.item]
+            }
         case 'REMOVE_FROM_BASKET':
             //logic to remove
-            break;
+            return {state}
         default:
             return state;
     }
