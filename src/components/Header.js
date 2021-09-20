@@ -1,3 +1,4 @@
+import { getAuth } from '@firebase/auth';
 import { Link } from 'react-router-dom';
 import { useStateValue } from '../StateProvider';
 import './styles/Header.css'
@@ -5,8 +6,14 @@ import './styles/Header.css'
 
 const Header = () => {
     
-    const [{cart}] = useStateValue();
+    const [{cart,user}] = useStateValue();
     console.log(cart)
+    const login =()=>{
+        const auth = getAuth();
+        if(user){
+            auth.signOut();
+        }
+    }
     return ( 
         <nav className = "header">
         <Link to = "/">
@@ -18,10 +25,10 @@ const Header = () => {
         </div>
         
         <div className="header__nav">
-        <Link to = "/login" className = 'header__link'>
-        <div className="header__option">
-            <span className = 'header__optionLineOne'>Hello</span>
-            <span className = 'header__optionLineTwo'>Sign in </span>
+        <Link to = {!user && "/login"} className = 'header__link'>
+        <div onClick ={login} className="header__option">
+            <span className = 'header__optionLineOne'>Hello {user?.email}</span>
+            <span className = 'header__optionLineTwo'>{user ? 'Sign Out' : 'Sign In'} </span>
         </div>
         </Link>
         {/* */}
